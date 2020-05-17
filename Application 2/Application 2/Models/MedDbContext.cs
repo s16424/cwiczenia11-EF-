@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application_2.Configurations;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,18 @@ namespace Application_2.Models
         public DbSet<Medicament> Medicaments { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
-        public DbSet<Prescription_Medicament> Prescription_Medicaments { get; set; }
+        //public DbSet<Prescription_Medicament> Prescription_Medicaments { get; set; }
 
         public MedDbContext (DbContextOptions options)
             :base(options)
         {
+
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new DoctorsConfiguration());
+            modelBuilder.ApplyConfiguration(new PatientsConfiuration());
 
         }
     }

@@ -4,14 +4,16 @@ using Application_2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Application_2.Migrations
 {
     [DbContext(typeof(MedDbContext))]
-    partial class MedDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200517143931_AddedDoctorsTable")]
+    partial class AddedDoctorsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,22 +106,6 @@ namespace Application_2.Migrations
                     b.HasKey("IdPatient");
 
                     b.ToTable("Patients");
-
-                    b.HasData(
-                        new
-                        {
-                            IdPatient = 1,
-                            Birthdate = new DateTime(1990, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "Kajetan",
-                            LastName = "Kajetanowicz"
-                        },
-                        new
-                        {
-                            IdPatient = 2,
-                            Birthdate = new DateTime(1994, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "Aleksandra",
-                            LastName = "Iksinska"
-                        });
                 });
 
             modelBuilder.Entity("Application_2.Models.Prescription", b =>
