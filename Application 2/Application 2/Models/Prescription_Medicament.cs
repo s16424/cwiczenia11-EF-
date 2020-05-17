@@ -12,6 +12,8 @@ namespace Application_2.Models
         public int IdMedicament { get; set; }
         public int IdPrescription { get; set; }
         public int Dose { get; set; }
-        public String Details { get; set; }
+
+        [MaxLength(100)]
+        public string Details { get; set; }
     }
 }
